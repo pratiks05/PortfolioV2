@@ -81,29 +81,41 @@ const Hero: React.FC = () => {
           </motion.button>
         </div>
 
-        {/* RIGHT SECTION */}
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end p-4 sm:p-8 mt-2">
+       {/* RIGHT SECTION */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end 
+                p-4 sm:p-8
+                mt-0 lg:-mt-16   /* shift UP */
+                lg:-translate-x-16  /* shift LEFT on large screens */
+            ">
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
-            className="relative w-full h-[520px] sm:h-[580px] lg:h-[620px] max-w-[620px]"
-          >
-            <div
-              className="absolute inset-0 -z-10 
-              bg-gradient-to-br from-pink-500/30 via-purple-600/30 to-blue-500/30 
-              blur-3xl rounded-full opacity-70"
-            ></div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 1.2 }}
+                className="
+                  relative 
+                  w-[280px] h-[280px]
+                  sm:w-[350px] sm:h-[350px]
+                  md:w-[420px] md:h-[420px]
+                  lg:w-[500px] lg:h-[500px]
+                  xl:w-[580px] xl:h-[580px]
+                  flex items-center justify-center
+                "
+              >
+                {/* Background Glow */}
+                <div
+                  className="absolute inset-0 -z-10 
+                  bg-gradient-to-br from-pink-300/20 via-slate-500/20 to-purple-500/20 
+                  blur-3xl rounded-full opacity-60"
+                ></div>
 
-            <IconCloud
-              images={techSlugs.map((slug) => `https://cdn.simpleicons.org/${slug}`)}
-              radius={120}
-              rotationSpeed={1.9}
-            />
-          </motion.div>
-
-        </div>
+                <IconCloud
+                  images={techSlugs.map((slug) => `https://cdn.simpleicons.org/${slug}`)}
+                  radius={window.innerWidth < 480 ? 80 : window.innerWidth < 768 ? 100 : 120}
+                  rotationSpeed={window.innerWidth < 480 ? 1.3 : 1.9}
+                />
+              </motion.div>
+            </div>
       </div>
 
       {/* Resume Preview Modal */}

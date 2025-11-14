@@ -40,15 +40,15 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([])
   const imagesLoadedRef = useRef<boolean[]>([])
 
-  // ICON SIZE UPDATED → Bigger Icons
-  const ICON_SIZE = 58 // (40 → 58)
+  // ICON SIZE - Increased for better visibility
+  const ICON_SIZE = 68 // (58 → 68)
   const ICON_RADIUS = ICON_SIZE / 2
 
-  // CLOUD SIZE UPDATED → Larger Cloud Sphere
-  const CLOUD_RADIUS = 145 // (100 → 145)
+  // CLOUD SIZE - Larger sphere radius
+  const CLOUD_RADIUS = 170 // (145 → 170)
 
-  // Canvas size for overall cloud
-  const CANVAS_SIZE = 520 // (400 → 520)
+  // Canvas size for overall cloud - Increased
+  const CANVAS_SIZE = 600 // (520 → 600)
 
   /* ------------------------------ LOAD ICONS ------------------------------ */
   useEffect(() => {
@@ -173,7 +173,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       const centerX = canvas.width / 2
       const centerY = canvas.height / 2
 
-      // FASTER AUTO ROTATION
+      // AUTO ROTATION SPEED
       const speed = 0.009
 
       if (!isDragging) {
