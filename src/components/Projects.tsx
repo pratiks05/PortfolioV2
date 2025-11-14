@@ -1,8 +1,6 @@
-
 import { PROJECTS } from "../constants";
 import { motion } from "framer-motion";
 
-// Type for a single project
 interface ProjectItem {
   title: string;
   description: string;
@@ -11,90 +9,94 @@ interface ProjectItem {
   technologies: string[];
 }
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: "easeOut" },
+  },
+};
+
 const Projects: React.FC = () => {
   return (
-    <div className="border-b border-neutral-900 pb-4">
+    <div className="border-b border-neutral-900 pb-10">
       <motion.h1
+        initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6 }}
         className="my-20 text-center text-4xl font-extrabold"
       >
         Projects
       </motion.h1>
 
-      <div>
+      <div className="flex flex-col gap-32">
         {(PROJECTS as ProjectItem[]).map((project, index) => (
-          <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
-            
-            {/* Left Section Image */}
+          <motion.div
+            key={index}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            className={`flex flex-col lg:flex-row items-center gap-12`}
+          >
+            {/* LEFT IMAGE SECTION */}
             <motion.div
+              className="flex-1 flex justify-center"
+              initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 1 }}
-              className="w-full lg:w-1/4 relative"
+              transition={{ duration: 0.9, ease: "easeOut" }}
             >
-              <div className="relative inline-block">
-                <img
-                  src={project.image as string}
-                  width={200}
-                  height={300}
-                  alt={project.title}
-                  className="mb-6 rounded shadow-lg hover:scale-105 transition-transform duration-300"
-                />
-
-                {/* Top-right Link Icon */}
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-2 right-2 bg-neutral-900 hover:bg-neutral-800 p-1.5 rounded-full transition-colors duration-300"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-purple-500"
-                  >
-                    <path d="M7 17L17 7M17 7H8M17 7V16" />
-                  </svg>
-                </a>
-              </div>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-[450px] h-auto rounded-xl shadow-xl hover:scale-[1.02] 
+                transition-all duration-500"
+              />
             </motion.div>
 
-            {/* Right Section Details */}
+            {/* RIGHT CONTENT SECTION */}
             <motion.div
+              initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 1 }}
-              className="w-full max-w-xl lg:w-3/4"
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="flex-1 lg:pr-10"
             >
-              <h6 className="mb-2 font-bold text-lg text-purple-200">
+              <h2 className="text-3xl font-bold text-purple-300 mb-4">
                 {project.title}
-              </h6>
+              </h2>
 
-              <p className="mb-4 text-neutral-400 italic">
+              <p className="text-neutral-400 text-lg leading-relaxed mb-6">
                 {project.description}
               </p>
 
-              <div className="grid grid-cols-3 gap-2 sm:grid-cols-3 md:flex md:flex-wrap">
-                {project.technologies.map((tech, techIndex) => (
+              {/* BUTTONS */}
+              <div className="flex gap-4 mb-6">
+                <a
+                  target="_blank"
+                  href={project.link}
+                  className="border border-purple-400 px-6 py-2 rounded-lg 
+                  hover:bg-purple-500/20 transition text-purple-300 font-medium
+                  flex items-center gap-2"
+                >
+                  🔗 Live Demo
+                </a>
+              </div>
+
+              {/* TECHNOLOGIES */}
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech, idx) => (
                   <span
-                    key={techIndex}
-                    className="mr-2 mb-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium text-purple-900 hover:bg-purple-800 hover:text-white transition-colors duration-300"
+                    key={idx}
+                    className="px-3 py-1 rounded-full bg-neutral-900 text-purple-400 
+                    text-sm border border-neutral-700"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
