@@ -1,14 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root{
-  font-family: "Inter",sans-serif;
+:root {
+  font-family: "Inter", sans-serif;
 }
 
-
-/* Add these styles to your global CSS file or relevant stylesheet */
+/* Animations */
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -66,7 +63,7 @@
   background: linear-gradient(to bottom, #d946ef, #a78bfa);
 }
 
-/* Optional: Add this for Firefox */
+/* Firefox custom scrollbar */
 * {
   scrollbar-width: thin;
   scrollbar-color: #8b5cf6 #1a1a1a;

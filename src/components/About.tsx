@@ -1,8 +1,9 @@
 import { ABOUT_TEXT } from "../constants";
 import aboutImg from "../assets/about.jpg";
 import { motion } from "framer-motion";
+import React from "react";
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <div className="border-b border-neutral-900 pb-4">
       <h1 className="my-20 text-center text-4xl">
@@ -26,7 +27,7 @@ const About = () => {
               whileHover={{ scale: 1.02, rotate: 2 }}
               transition={{ duration: 0.3 }}
               className="rounded-xl w-[300px] sm:w-[350px] lg:w-[400px]"
-              src={aboutImg}
+              src={aboutImg as string}
               alt="About Me"
             />
           </div>
@@ -39,7 +40,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="w-full lg:w-1/2 flex justify-center lg:justify-start px-4 sm:px-8"
         >
-          <p className="my-4 max-w-xl py-4 text-base sm:text-lg text-gray-300  font-light tracking-wide leading-relaxed bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 bg-clip-text text-transparent">
+          <p className="my-4 max-w-xl py-4 text-base sm:text-lg text-gray-300 font-light tracking-wide leading-relaxed bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 bg-clip-text text-transparent">
             {ABOUT_TEXT}
           </p>
         </motion.div>

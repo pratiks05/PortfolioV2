@@ -1,14 +1,15 @@
-import { FaLinkedin, FaGithub, FaInstagram, } from "react-icons/fa";
+
+import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer className="border-t border-neutral-900 py-6 flex flex-col md:flex-row items-center justify-between px-6">
       {/* Left Side - Copyright */}
       <div className="flex items-center">
-    
-        <p className="text-sm text-neutral-400">© 2025 Pratik Singh. All rights reserved.</p>
+        <p className="text-sm text-neutral-400">
+          © 2025 Pratik Singh. All rights reserved.
+        </p>
       </div>
 
       {/* Right Side - Social Links */}
@@ -21,6 +22,7 @@ const Footer = () => {
         >
           <FaLinkedin size={24} />
         </a>
+
         <a
           href="https://github.com/pratiks05"
           target="_blank"
@@ -29,6 +31,7 @@ const Footer = () => {
         >
           <FaGithub size={24} />
         </a>
+
         <a
           href="https://www.instagram.com/_impratiksingh05_/"
           target="_blank"
@@ -37,6 +40,7 @@ const Footer = () => {
         >
           <FaInstagram size={24} />
         </a>
+
         <a
           href="https://x.com/pratikks555"
           target="_blank"
